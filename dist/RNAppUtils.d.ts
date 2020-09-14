@@ -14,7 +14,6 @@ declare const _default: {
         value1: number;
         value2: number;
     }>;
-    IOS_showStartAds(): void;
     IOS_openAppSetting(): void;
     IOS_requestPermisionPushNotification(): void;
     IOS_isIOS10(): Promise<boolean>;

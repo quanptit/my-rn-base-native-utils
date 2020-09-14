@@ -1,13 +1,11 @@
 import {NativeModules, Platform} from 'react-native'
 
 const RNCommonUtils = Platform.OS === "ios" ? NativeModules.RNCommonUtilsIOS : NativeModules.RNCommonUtilsAndroid;
-
 export default {
     //return number seconds
     lastModified(filePath: string): Promise<number> {
         return RNCommonUtils.lastModified(filePath);
     },
-
     /**
      * IOS: đọc file trong bundle
      * Android: Đọc file trong Asset Folder
@@ -21,26 +19,15 @@ export default {
             })
         })
     },
-
     saveIntPreference(key: String, value: Number): Promise<void> {
         return RNCommonUtils.saveIntPreference(key, value)
     },
-
     getStringSetting(): Promise<string> {
         return RNCommonUtils.getStringSetting()
     },
-
-    getLanguageCode(): string {
-        return this.languageCodeSave || this.languageCode
-    },
-    getLanguageCodeSave(): string {
-        return this.languageCodeSave;
-    },
-
     async getCurrentLanguageCode(): Promise<string> {
         return await RNCommonUtils.getCurrentLanguageCode();
     },
-
     setVIPUser(): Promise<void> {
         return RNCommonUtils.setVIPUser()
     },

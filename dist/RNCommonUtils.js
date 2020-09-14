@@ -1,11 +1,6 @@
 import { NativeModules, Platform } from 'react-native';
-import { PreferenceUtils } from "./PreferenceUtils";
-import { isEmpty } from "./CommonFunction";
 const RNCommonUtils = Platform.OS === "ios" ? NativeModules.RNCommonUtilsIOS : NativeModules.RNCommonUtilsAndroid;
 export default {
-    languageCode: null,
-    isVipUserValue: null,
-    languageCodeSave: null,
     //return number seconds
     lastModified(filePath) {
         return RNCommonUtils.lastModified(filePath);
@@ -29,45 +24,14 @@ export default {
     getStringSetting() {
         return RNCommonUtils.getStringSetting();
     },
-    getLanguageCode() {
-        return this.languageCodeSave || this.languageCode;
-    },
-    getLanguageCodeSave() {
-        return this.languageCodeSave;
-    },
-    saveLanguageCode(codeSave) {
-        return PreferenceUtils.saveSetingWithPromise("LANGUAGE_CODE", codeSave);
-    },
-    async loadCurrentLanguageCode() {
-        let codeSave = await PreferenceUtils.getStringSetting("LANGUAGE_CODE");
-        if (codeSave != null) {
-            this.languageCodeSave = codeSave;
-            return this.languageCodeSave;
-        }
-        this.languageCode = await RNCommonUtils.getCurrentLanguageCode();
-        return this.languageCode;
-    },
-    updateCurrentLanguage(languageCode, callback) {
-        if (isEmpty(languageCode))
-            return;
-        this.languageCode = undefined;
-        this.languageCodeSave = languageCode;
-        PreferenceUtils.saveSeting("LANGUAGE_CODE", languageCode, callback);
+    async getCurrentLanguageCode() {
+        return await RNCommonUtils.getCurrentLanguageCode();
     },
     setVIPUser() {
         return RNCommonUtils.setVIPUser();
     },
     async isVIPUser() {
-        RNCommonUtils.isVipUserValue = await RNCommonUtils.isVIPUser();
-        return RNCommonUtils.isVipUserValue;
-    },
-    async loadVIPUserState() {
-        RNCommonUtils.isVipUserValue = await RNCommonUtils.isVIPUser();
-    },
-    isVipUserInstant() {
-        if (RNCommonUtils.isVipUserValue == null)
-            RNCommonUtils.loadVIPUserState();
-        return RNCommonUtils.isVipUserValue;
+        return await RNCommonUtils.isVIPUser();
     },
     getAppName() {
         return RNCommonUtils.getAppName();

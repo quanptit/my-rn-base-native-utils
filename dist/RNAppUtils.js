@@ -30,9 +30,6 @@ export default {
         return NativeModules.RNCommonUtilsAndroid.getTwoScore(key1, key2);
     },
     // region ios
-    IOS_showStartAds() {
-        NativeModules.RNCommonUtilsIOS.showStartAds();
-    },
     IOS_openAppSetting() {
         NativeModules.RNCommonUtilsIOS.openAppSetting();
     },

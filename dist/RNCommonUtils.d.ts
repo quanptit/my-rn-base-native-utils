@@ -1,7 +1,4 @@
 declare const _default: {
-    languageCode: any;
-    isVipUserValue: any;
-    languageCodeSave: any;
     lastModified(filePath: string): Promise<number>;
     /**
      * IOS: đọc file trong bundle
@@ -10,15 +7,9 @@ declare const _default: {
     readFileFromAssetFolder(fileSubPath: string, isDecrypt: boolean): Promise<string>;
     saveIntPreference(key: String, value: Number): Promise<void>;
     getStringSetting(): Promise<string>;
-    getLanguageCode(): string;
-    getLanguageCodeSave(): string;
-    saveLanguageCode(codeSave: string): Promise<void>;
-    loadCurrentLanguageCode(): Promise<string>;
-    updateCurrentLanguage(languageCode: string, callback?: (isSuccess: boolean) => void): void;
+    getCurrentLanguageCode(): Promise<string>;
     setVIPUser(): Promise<void>;
     isVIPUser(): Promise<boolean>;
-    loadVIPUserState(): Promise<void>;
-    isVipUserInstant(): boolean;
     getAppName(): Promise<string>;
     getBoolPref(pKey: string): Promise<boolean>;
     /**
