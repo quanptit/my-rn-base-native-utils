@@ -1,0 +1,30 @@
+{
+  "name": "my-rn-base-native-utils",
+  "version": "1.0.0",
+  "description": "my-rn-base-native-utils",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "install_npm": "yarn install",
+    "link_libs": "yarn link @types/react @types/react-native @types/lodash react react-native lodash",
+    "npm_publish": "npm publish"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "Quan Trinh Van",
+  "license": "ISC",
+  "homepage": "https://github.com/quanptit/my-rn-base-native-utils",
+  "bugs": "https://github.com/quanptit/my-rn-base-native-utils/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quanptit/my-rn-base-native-utils.git"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "rn-fetch-blob": "^0.10.13"
+  }
+}
